@@ -15,9 +15,9 @@
 		E59124281B8AFBF5008978E2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E59124261B8AFBF5008978E2 /* LaunchScreen.xib */; };
 		E59124341B8AFBF5008978E2 /* TBEmojiKeyBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E59124331B8AFBF5008978E2 /* TBEmojiKeyBoardTests.m */; };
 		E59124401B8B0598008978E2 /* TBEmojiKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E591243F1B8B0598008978E2 /* TBEmojiKeyboard.m */; };
-		E59124431B8B0CCA008978E2 /* TBEmojiBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E59124421B8B0CCA008978E2 /* TBEmojiBottomBar.m */; };
 		E59124461B8B150B008978E2 /* TBEmojiViewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E59124451B8B150B008978E2 /* TBEmojiViewCollectionView.m */; };
-		E59124491B8B181B008978E2 /* TBEmojiPageFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E59124481B8B181B008978E2 /* TBEmojiPageFlowLayout.m */; };
+		E591244E1B8B32CB008978E2 /* TBEmojiBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E591244B1B8B32CB008978E2 /* TBEmojiBottomBar.m */; };
+		E591244F1B8B32CB008978E2 /* TBEmojiPageFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E591244D1B8B32CB008978E2 /* TBEmojiPageFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,12 +46,12 @@
 		E59124331B8AFBF5008978E2 /* TBEmojiKeyBoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBEmojiKeyBoardTests.m; sourceTree = "<group>"; };
 		E591243E1B8B0598008978E2 /* TBEmojiKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBEmojiKeyboard.h; path = TBEmojiKeyBoard/TBEmojiKeyboard.h; sourceTree = "<group>"; };
 		E591243F1B8B0598008978E2 /* TBEmojiKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBEmojiKeyboard.m; path = TBEmojiKeyBoard/TBEmojiKeyboard.m; sourceTree = "<group>"; };
-		E59124411B8B0CCA008978E2 /* TBEmojiBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEmojiBottomBar.h; sourceTree = "<group>"; };
-		E59124421B8B0CCA008978E2 /* TBEmojiBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEmojiBottomBar.m; sourceTree = "<group>"; };
 		E59124441B8B150B008978E2 /* TBEmojiViewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBEmojiViewCollectionView.h; path = TBEmojiKeyBoard/TBEmojiKeyboard/TBEmojiViewCollectionView.h; sourceTree = "<group>"; };
 		E59124451B8B150B008978E2 /* TBEmojiViewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBEmojiViewCollectionView.m; path = TBEmojiKeyBoard/TBEmojiKeyboard/TBEmojiViewCollectionView.m; sourceTree = "<group>"; };
-		E59124471B8B181B008978E2 /* TBEmojiPageFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEmojiPageFlowLayout.h; sourceTree = "<group>"; };
-		E59124481B8B181B008978E2 /* TBEmojiPageFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEmojiPageFlowLayout.m; sourceTree = "<group>"; };
+		E591244A1B8B32CB008978E2 /* TBEmojiBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBEmojiBottomBar.h; path = TBEmojiKeyBoard/TBEmojiKeyboard/TBEmojiBottomBar.h; sourceTree = "<group>"; };
+		E591244B1B8B32CB008978E2 /* TBEmojiBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBEmojiBottomBar.m; path = TBEmojiKeyBoard/TBEmojiKeyboard/TBEmojiBottomBar.m; sourceTree = "<group>"; };
+		E591244C1B8B32CB008978E2 /* TBEmojiPageFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBEmojiPageFlowLayout.h; path = TBEmojiKeyBoard/TBEmojiKeyboard/TBEmojiPageFlowLayout.h; sourceTree = "<group>"; };
+		E591244D1B8B32CB008978E2 /* TBEmojiPageFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBEmojiPageFlowLayout.m; path = TBEmojiKeyBoard/TBEmojiKeyboard/TBEmojiPageFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,14 +135,14 @@
 		E591243D1B8B0546008978E2 /* TBEmojiKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				E591244A1B8B32CB008978E2 /* TBEmojiBottomBar.h */,
+				E591244B1B8B32CB008978E2 /* TBEmojiBottomBar.m */,
+				E591244C1B8B32CB008978E2 /* TBEmojiPageFlowLayout.h */,
+				E591244D1B8B32CB008978E2 /* TBEmojiPageFlowLayout.m */,
 				E591243E1B8B0598008978E2 /* TBEmojiKeyboard.h */,
 				E591243F1B8B0598008978E2 /* TBEmojiKeyboard.m */,
-				E59124411B8B0CCA008978E2 /* TBEmojiBottomBar.h */,
-				E59124421B8B0CCA008978E2 /* TBEmojiBottomBar.m */,
 				E59124441B8B150B008978E2 /* TBEmojiViewCollectionView.h */,
 				E59124451B8B150B008978E2 /* TBEmojiViewCollectionView.m */,
-				E59124471B8B181B008978E2 /* TBEmojiPageFlowLayout.h */,
-				E59124481B8B181B008978E2 /* TBEmojiPageFlowLayout.m */,
 			);
 			name = TBEmojiKeyboard;
 			path = ..;
@@ -250,11 +250,11 @@
 			files = (
 				E59124461B8B150B008978E2 /* TBEmojiViewCollectionView.m in Sources */,
 				E59124201B8AFBF4008978E2 /* ViewController.m in Sources */,
-				E59124491B8B181B008978E2 /* TBEmojiPageFlowLayout.m in Sources */,
+				E591244E1B8B32CB008978E2 /* TBEmojiBottomBar.m in Sources */,
 				E591241D1B8AFBF4008978E2 /* AppDelegate.m in Sources */,
 				E591241A1B8AFBF4008978E2 /* main.m in Sources */,
 				E59124401B8B0598008978E2 /* TBEmojiKeyboard.m in Sources */,
-				E59124431B8B0CCA008978E2 /* TBEmojiBottomBar.m in Sources */,
+				E591244F1B8B32CB008978E2 /* TBEmojiPageFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
