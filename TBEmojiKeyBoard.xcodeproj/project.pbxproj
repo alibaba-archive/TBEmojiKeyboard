@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E591241A1B8AFBF4008978E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E59124191B8AFBF4008978E2 /* main.m */; };
+		E591241D1B8AFBF4008978E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E591241C1B8AFBF4008978E2 /* AppDelegate.m */; };
+		E59124201B8AFBF4008978E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E591241F1B8AFBF4008978E2 /* ViewController.m */; };
+		E59124231B8AFBF5008978E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59124211B8AFBF4008978E2 /* Main.storyboard */; };
+		E59124251B8AFBF5008978E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E59124241B8AFBF5008978E2 /* Images.xcassets */; };
+		E59124281B8AFBF5008978E2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E59124261B8AFBF5008978E2 /* LaunchScreen.xib */; };
+		E59124341B8AFBF5008978E2 /* TBEmojiKeyBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E59124331B8AFBF5008978E2 /* TBEmojiKeyBoardTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E591242E1B8AFBF5008978E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E591240C1B8AFBF4008978E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E59124131B8AFBF4008978E2;
+			remoteInfo = TBEmojiKeyBoard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E59124141B8AFBF4008978E2 /* TBEmojiKeyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBEmojiKeyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E59124181B8AFBF4008978E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E59124191B8AFBF4008978E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E591241B1B8AFBF4008978E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E591241C1B8AFBF4008978E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E591241E1B8AFBF4008978E2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E591241F1B8AFBF4008978E2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E59124221B8AFBF5008978E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E59124241B8AFBF5008978E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E59124271B8AFBF5008978E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		E591242D1B8AFBF5008978E2 /* TBEmojiKeyBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TBEmojiKeyBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E59124321B8AFBF5008978E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E59124331B8AFBF5008978E2 /* TBEmojiKeyBoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBEmojiKeyBoardTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E59124111B8AFBF4008978E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E591242A1B8AFBF5008978E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E591240B1B8AFBF4008978E2 = {
+			isa = PBXGroup;
+			children = (
+				E59124161B8AFBF4008978E2 /* TBEmojiKeyBoard */,
+				E59124301B8AFBF5008978E2 /* TBEmojiKeyBoardTests */,
+				E59124151B8AFBF4008978E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E59124151B8AFBF4008978E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E59124141B8AFBF4008978E2 /* TBEmojiKeyBoard.app */,
+				E591242D1B8AFBF5008978E2 /* TBEmojiKeyBoardTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E59124161B8AFBF4008978E2 /* TBEmojiKeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E591241B1B8AFBF4008978E2 /* AppDelegate.h */,
+				E591241C1B8AFBF4008978E2 /* AppDelegate.m */,
+				E591241E1B8AFBF4008978E2 /* ViewController.h */,
+				E591241F1B8AFBF4008978E2 /* ViewController.m */,
+				E59124211B8AFBF4008978E2 /* Main.storyboard */,
+				E59124241B8AFBF5008978E2 /* Images.xcassets */,
+				E59124261B8AFBF5008978E2 /* LaunchScreen.xib */,
+				E59124171B8AFBF4008978E2 /* Supporting Files */,
+			);
+			path = TBEmojiKeyBoard;
+			sourceTree = "<group>";
+		};
+		E59124171B8AFBF4008978E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E59124181B8AFBF4008978E2 /* Info.plist */,
+				E59124191B8AFBF4008978E2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E59124301B8AFBF5008978E2 /* TBEmojiKeyBoardTests */ = {
+			isa = PBXGroup;
+			children = (
+				E59124331B8AFBF5008978E2 /* TBEmojiKeyBoardTests.m */,
+				E59124311B8AFBF5008978E2 /* Supporting Files */,
+			);
+			path = TBEmojiKeyBoardTests;
+			sourceTree = "<group>";
+		};
+		E59124311B8AFBF5008978E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E59124321B8AFBF5008978E2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E59124131B8AFBF4008978E2 /* TBEmojiKeyBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E59124371B8AFBF5008978E2 /* Build configuration list for PBXNativeTarget "TBEmojiKeyBoard" */;
+			buildPhases = (
+				E59124101B8AFBF4008978E2 /* Sources */,
+				E59124111B8AFBF4008978E2 /* Frameworks */,
+				E59124121B8AFBF4008978E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TBEmojiKeyBoard;
+			productName = TBEmojiKeyBoard;
+			productReference = E59124141B8AFBF4008978E2 /* TBEmojiKeyBoard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E591242C1B8AFBF5008978E2 /* TBEmojiKeyBoardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E591243A1B8AFBF5008978E2 /* Build configuration list for PBXNativeTarget "TBEmojiKeyBoardTests" */;
+			buildPhases = (
+				E59124291B8AFBF5008978E2 /* Sources */,
+				E591242A1B8AFBF5008978E2 /* Frameworks */,
+				E591242B1B8AFBF5008978E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E591242F1B8AFBF5008978E2 /* PBXTargetDependency */,
+			);
+			name = TBEmojiKeyBoardTests;
+			productName = TBEmojiKeyBoardTests;
+			productReference = E591242D1B8AFBF5008978E2 /* TBEmojiKeyBoardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E591240C1B8AFBF4008978E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = Teambition;
+				TargetAttributes = {
+					E59124131B8AFBF4008978E2 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					E591242C1B8AFBF5008978E2 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = E59124131B8AFBF4008978E2;
+					};
+				};
+			};
+			buildConfigurationList = E591240F1B8AFBF4008978E2 /* Build configuration list for PBXProject "TBEmojiKeyBoard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E591240B1B8AFBF4008978E2;
+			productRefGroup = E59124151B8AFBF4008978E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E59124131B8AFBF4008978E2 /* TBEmojiKeyBoard */,
+				E591242C1B8AFBF5008978E2 /* TBEmojiKeyBoardTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E59124121B8AFBF4008978E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E59124231B8AFBF5008978E2 /* Main.storyboard in Resources */,
+				E59124281B8AFBF5008978E2 /* LaunchScreen.xib in Resources */,
+				E59124251B8AFBF5008978E2 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E591242B1B8AFBF5008978E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E59124101B8AFBF4008978E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E59124201B8AFBF4008978E2 /* ViewController.m in Sources */,
+				E591241D1B8AFBF4008978E2 /* AppDelegate.m in Sources */,
+				E591241A1B8AFBF4008978E2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E59124291B8AFBF5008978E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E59124341B8AFBF5008978E2 /* TBEmojiKeyBoardTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E591242F1B8AFBF5008978E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E59124131B8AFBF4008978E2 /* TBEmojiKeyBoard */;
+			targetProxy = E591242E1B8AFBF5008978E2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E59124211B8AFBF4008978E2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E59124221B8AFBF5008978E2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E59124261B8AFBF5008978E2 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E59124271B8AFBF5008978E2 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E59124351B8AFBF5008978E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E59124361B8AFBF5008978E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E59124381B8AFBF5008978E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TBEmojiKeyBoard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E59124391B8AFBF5008978E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TBEmojiKeyBoard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E591243B1B8AFBF5008978E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TBEmojiKeyBoardTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TBEmojiKeyBoard.app/TBEmojiKeyBoard";
+			};
+			name = Debug;
+		};
+		E591243C1B8AFBF5008978E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TBEmojiKeyBoardTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TBEmojiKeyBoard.app/TBEmojiKeyBoard";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E591240F1B8AFBF4008978E2 /* Build configuration list for PBXProject "TBEmojiKeyBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E59124351B8AFBF5008978E2 /* Debug */,
+				E59124361B8AFBF5008978E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E59124371B8AFBF5008978E2 /* Build configuration list for PBXNativeTarget "TBEmojiKeyBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E59124381B8AFBF5008978E2 /* Debug */,
+				E59124391B8AFBF5008978E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E591243A1B8AFBF5008978E2 /* Build configuration list for PBXNativeTarget "TBEmojiKeyBoardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E591243B1B8AFBF5008978E2 /* Debug */,
+				E591243C1B8AFBF5008978E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E591240C1B8AFBF4008978E2 /* Project object */;
+}
