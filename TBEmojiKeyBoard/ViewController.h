@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *inputView;
+- (IBAction)emoji:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *emojiButton;
 
 @end
 
