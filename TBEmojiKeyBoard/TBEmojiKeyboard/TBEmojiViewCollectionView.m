@@ -13,7 +13,10 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
 
 @interface TBEmojiViewCollectionView()<UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UICollectionView  *collectionView;
+@property (nonatomic, strong) UIPageControl     *pageControl;
+
+@property (nonatomic, strong) NSArray           *dataSource;
 
 @end
 
@@ -29,36 +32,86 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
 
 - (void)commomIntt {
     
-    [self setBackgroundColor:[UIColor redColor]];
     [self initCollectionView];
+    [self initDataSource];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellIdentifer];
+    
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height-20, CGRectGetWidth(self.frame), 20)];
+    [self.pageControl setNumberOfPages:[self getPageNumber]];
+    [self.pageControl setCurrentPage:0];
+    [self.pageControl setBackgroundColor:[UIColor grayColor]];
+    
+    [self addSubview:self.pageControl];
+}
+
+- (void)initDataSource {
+
+    self.dataSource = [[NSArray alloc] initWithObjects:@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1", nil];
 }
 
 - (void)initCollectionView {
 
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-10) collectionViewLayout:[[TBEmojiPageFlowLayout alloc] init]];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-20) collectionViewLayout:[[TBEmojiPageFlowLayout alloc] init]];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.pagingEnabled = YES;
+    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
     [self addSubview:self.collectionView];
 
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
-    return 1;
+    return [self getPageNumber];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return 30;
+    return 24;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    
     UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifer forIndexPath:indexPath];
-    [cell setBackgroundColor:[UIColor redColor]];
+    UIImageView *imageview = [[UIImageView alloc] initWithFrame:cell.contentView.frame];
+    [imageview setImage:[UIImage imageNamed:@"moji"]];
+    if (indexPath.row <23 && [self isValidCell:indexPath]) {
+        [cell.contentView addSubview:imageview];
+    } else
+    {
+        for (UIView *v in cell.contentView.subviews) {
+            [v removeFromSuperview];
+        }
+    }
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"%ld,%ld",indexPath.section,indexPath.row);
+}
+
+#pragma mark ScrollView Delegate 
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    int index = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;
+    self.pageControl.currentPage = index;
+}
+
+
+#pragma mark private
+
+- (BOOL)isValidCell:(NSIndexPath *)indexPath {
+
+    if ((indexPath.section +1) * (indexPath.row +1) <= self.dataSource.count) {
+//        NSLog(@"%ld %ld %ld",indexPath.section +1,indexPath.row +1,self.dataSource.count );
+        return YES;
+    }
+    return NO;
+}
+
+- (NSInteger)getPageNumber {
+    return self.dataSource.count/24==0?self.dataSource.count/24:self.dataSource.count/24+1;
 }
 
 /*

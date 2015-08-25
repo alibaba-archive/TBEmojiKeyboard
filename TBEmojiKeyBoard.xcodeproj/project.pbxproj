@@ -135,14 +135,14 @@
 		E591243D1B8B0546008978E2 /* TBEmojiKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				E591244A1B8B32CB008978E2 /* TBEmojiBottomBar.h */,
-				E591244B1B8B32CB008978E2 /* TBEmojiBottomBar.m */,
-				E591244C1B8B32CB008978E2 /* TBEmojiPageFlowLayout.h */,
-				E591244D1B8B32CB008978E2 /* TBEmojiPageFlowLayout.m */,
 				E591243E1B8B0598008978E2 /* TBEmojiKeyboard.h */,
 				E591243F1B8B0598008978E2 /* TBEmojiKeyboard.m */,
+				E591244A1B8B32CB008978E2 /* TBEmojiBottomBar.h */,
+				E591244B1B8B32CB008978E2 /* TBEmojiBottomBar.m */,
 				E59124441B8B150B008978E2 /* TBEmojiViewCollectionView.h */,
 				E59124451B8B150B008978E2 /* TBEmojiViewCollectionView.m */,
+				E591244C1B8B32CB008978E2 /* TBEmojiPageFlowLayout.h */,
+				E591244D1B8B32CB008978E2 /* TBEmojiPageFlowLayout.m */,
 			);
 			name = TBEmojiKeyboard;
 			path = ..;
@@ -449,6 +449,7 @@
 				E59124391B8AFBF5008978E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E591243A1B8AFBF5008978E2 /* Build configuration list for PBXNativeTarget "TBEmojiKeyBoardTests" */ = {
 			isa = XCConfigurationList;
@@ -457,6 +458,7 @@
 				E591243C1B8AFBF5008978E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

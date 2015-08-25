@@ -43,9 +43,7 @@
                                                object:nil];
     
     self.keyboard= [[TBEmojiKeyboard alloc] init];
-
-    self.keyboard.window.windowLevel = 20000;
-    [self.view addSubview:self.keyboard];
+    //[self.view addSubview:self.keyboard];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notif {
@@ -115,8 +113,10 @@
 }
 
 - (IBAction)emoji:(id)sender {
-    [self.inputView resignFirstResponder];
-    [self.keyboard showKeyboard];
+    //[self.inputView resignFirstResponder];
+    
+    [self.inputView switchToEmojiKeyboard:self.keyboard];
+//    [self.keyboard showKeyboard];
     [self.emojiButton setAction:@selector(sKeyboard)];
     [self.emojiButton setTitle:@"键盘"];
     
@@ -124,8 +124,9 @@
 
 - (void)sKeyboard {
 
-    [self.inputView becomeFirstResponder];
+    [self.inputView switchToDefaultKeyboard];
     [self.emojiButton setAction:@selector(emoji:)];
+    [self.emojiButton setTitle:@"表情"];
 }
 
 

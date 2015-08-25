@@ -7,8 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @class TBEmojiKeyboard;
+
+@interface UIResponder (WriteableInputView)
+@property (readwrite, retain) UIView *inputView;
+@end
+
+@interface UIResponder (TBEmojiKeyboard)
+
+@property (readonly, strong) TBEmojiKeyboard *emojiKeyboard;
+- (void)switchToDefaultKeyboard;
+- (void)switchToEmojiKeyboard:(TBEmojiKeyboard *)keyboard;
+@end
+
+
 
 @protocol TBEmojiKeyboardDelegate <NSObject>
 
@@ -23,6 +35,9 @@
 @end
 
 @interface TBEmojiKeyboard : UIView
+
+
+@property (nonatomic, weak, readonly) UIResponder<UITextInput> *textInput;
 
 - (void)showKeyboard;
 

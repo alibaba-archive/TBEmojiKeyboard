@@ -14,6 +14,14 @@ static const CGFloat kTBEmojiKeyboardHeight         = 216;
 static const CGFloat kTBEmojiCollectionViewHeight   = 176;
 static const CGFloat kTBEmojiBottomBarHeight        = 40;
 
+@interface TBEmojiKeyboard()
+
+
+@property (nonatomic, weak ,readwrite)  UIResponder<UITextInput>    *textInput;
+
+
+@end
+
 @implementation TBEmojiKeyboard
 
 - (instancetype)init {
@@ -25,12 +33,15 @@ static const CGFloat kTBEmojiBottomBarHeight        = 40;
 }
 
 - (void)commonInit {
-    [self setHidden:YES];
-    [self setBackgroundColor:[UIColor grayColor]];
-    [self setFrame:CGRectMake(0, 0, 375, kTBEmojiKeyboardHeight)];
+    //[self setHidden:YES];
+    
+    [self setBackgroundColor:[UIColor whiteColor]];
+    [self setFrame:CGRectMake(0, 20, 375, kTBEmojiKeyboardHeight)];
     
     TBEmojiViewCollectionView *collectionView = [[TBEmojiViewCollectionView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), kTBEmojiCollectionViewHeight)];
     [self addSubview:collectionView];
+    
+    
     
     TBEmojiBottomBar *bottomBar = [[TBEmojiBottomBar alloc] initWithFrame:CGRectMake(0, kTBEmojiKeyboardHeight - kTBEmojiBottomBarHeight, CGRectGetWidth(self.frame), kTBEmojiBottomBarHeight)];
     [self addSubview:bottomBar];
@@ -74,6 +85,47 @@ static const CGFloat kTBEmojiBottomBarHeight        = 40;
 
 - (CGFloat)getDeviceHeight {
     return [[UIScreen mainScreen] bounds].size.height;
+}
+
+#pragma mark - Input
+
+- (void)setInputViewToView:(UIView *)view {
+    self.textInput.inputView = view;
+    [self.textInput reloadInputViews];
+}
+
+- (void)attachToTextInput:(UIResponder<UITextInput> *)textInput {
+
+    self.textInput = textInput;
+    [self setInputViewToView:self];
+}
+
+- (void)switchToDefaultKeyboard {
+    [self setInputViewToView:nil];
+    self.textInput = nil;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:WUEmoticonsKeyboardDidSwitchToDefaultKeyboardNotification object:self];
+}
+
+@end
+
+
+
+@implementation UIResponder (TBEmojiKeyboard)
+
+- (TBEmojiKeyboard *)emojiKeyboard {
+    if ([self.inputView isKindOfClass:[TBEmojiKeyboard class]]) {
+        return (TBEmojiKeyboard *)self.inputView;
+    }
+    return nil;
+}
+
+- (void)switchToEmojiKeyboard:(TBEmojiKeyboard *)keyboard {
+    [keyboard attachToTextInput:(UIResponder<UITextInput> *)self];
+}
+
+- (void)switchToDefaultKeyboard {
+    [self.emojiKeyboard switchToDefaultKeyboard];
+    
 }
 
 @end
