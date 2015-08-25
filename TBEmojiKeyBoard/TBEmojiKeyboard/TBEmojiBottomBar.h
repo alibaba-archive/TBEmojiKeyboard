@@ -10,4 +10,6 @@
 
 @interface TBEmojiBottomBar : UIView
 
+- (instancetype)initWithFrame:(CGRect)frame buttonArray:(NSArray *)buttonArray;
+
 @end

@@ -9,10 +9,7 @@
 #import "TBEmojiKeyboard.h"
 #import "TBEmojiViewCollectionView.h"
 #import "TBEmojiBottomBar.h"
-
-static const CGFloat kTBEmojiKeyboardHeight         = 216;
-static const CGFloat kTBEmojiCollectionViewHeight   = 176;
-static const CGFloat kTBEmojiBottomBarHeight        = 40;
+#import "TBEmojiKeyboardConstant.h"
 
 @interface TBEmojiKeyboard()
 
@@ -35,15 +32,14 @@ static const CGFloat kTBEmojiBottomBarHeight        = 40;
 - (void)commonInit {
     //[self setHidden:YES];
     
-    [self setBackgroundColor:[UIColor whiteColor]];
+    [self setBackgroundColor:[UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1]];
     [self setFrame:CGRectMake(0, 20, 375, kTBEmojiKeyboardHeight)];
     
     TBEmojiViewCollectionView *collectionView = [[TBEmojiViewCollectionView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), kTBEmojiCollectionViewHeight)];
     [self addSubview:collectionView];
     
-    
-    
-    TBEmojiBottomBar *bottomBar = [[TBEmojiBottomBar alloc] initWithFrame:CGRectMake(0, kTBEmojiKeyboardHeight - kTBEmojiBottomBarHeight, CGRectGetWidth(self.frame), kTBEmojiBottomBarHeight)];
+    NSArray *buttonArray = @[@"默认",@"Emoji"];
+    TBEmojiBottomBar *bottomBar = [[TBEmojiBottomBar alloc] initWithFrame:CGRectMake(0, kTBEmojiKeyboardHeight - kTBEmojiBottomBarHeight, CGRectGetWidth(self.frame), kTBEmojiBottomBarHeight) buttonArray:buttonArray];
     [self addSubview:bottomBar];
     
 }
@@ -51,9 +47,9 @@ static const CGFloat kTBEmojiBottomBarHeight        = 40;
 - (void)showKeyboard {
     
     [self setHidden:NO];
-    CGRect originFrame = CGRectMake(0, [self getDeviceHeight], [self getDeviceWidth], kTBEmojiKeyboardHeight);
+    CGRect originFrame = CGRectMake(0, [TBEmojiKeyboardConstant tbkey_getDeviceHeight], [TBEmojiKeyboardConstant tbkey_getDeviceWidth], kTBEmojiKeyboardHeight);
     
-    CGRect finalFrame = CGRectMake(0, [self getDeviceHeight] - kTBEmojiKeyboardHeight, [self getDeviceWidth], kTBEmojiKeyboardHeight);
+    CGRect finalFrame = CGRectMake(0, [TBEmojiKeyboardConstant tbkey_getDeviceHeight] - kTBEmojiKeyboardHeight, [TBEmojiKeyboardConstant tbkey_getDeviceWidth], kTBEmojiKeyboardHeight);
     
     self.frame = originFrame;
     
@@ -79,13 +75,7 @@ static const CGFloat kTBEmojiBottomBarHeight        = 40;
 
 #pragma mark private
 
-- (CGFloat)getDeviceWidth {
-    return [[UIScreen mainScreen] bounds].size.width;
-}
 
-- (CGFloat)getDeviceHeight {
-    return [[UIScreen mainScreen] bounds].size.height;
-}
 
 #pragma mark - Input
 

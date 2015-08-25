@@ -7,6 +7,7 @@
 //
 
 #import "TBEmojiPageFlowLayout.h"
+#import "TBEmojiKeyboardConstant.h"
 
 @implementation TBEmojiPageFlowLayout
 
@@ -14,11 +15,11 @@
 
     if (self = [super init]) {
         self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        
-        CGFloat width = ([[UIScreen mainScreen] bounds].size.width - 30)/8.0;
+        CGFloat width = ([[UIScreen mainScreen] bounds].size.width - 30)/(CGFloat)kTBEmojiSection;
+        CGFloat height = (kTBEmojiCollectionViewHeight - 30 -kTBEmojiPageControlHeight)/(CGFloat)kTBEmojiRow;
         self.minimumLineSpacing = 0;
         self.minimumInteritemSpacing = 0;
-        self.itemSize = CGSizeMake(width, width);
+        self.itemSize = CGSizeMake(width, height);
         self.sectionInset = UIEdgeInsetsMake(15, 15, 5, 15);
         
     }

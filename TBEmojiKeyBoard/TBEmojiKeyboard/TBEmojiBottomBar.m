@@ -7,21 +7,87 @@
 //
 
 #import "TBEmojiBottomBar.h"
+#import "TBEmojiKeyboardConstant.h"
+
+
+
+@interface TBEmojiBottomBar()
+
+@property (nonatomic, strong) UIButton      *sendButton;
+@property (nonatomic, strong) UIScrollView  *buttonScrollView;
+@property (nonatomic, strong) NSArray       *buttonArray;
+
+@end
 
 @implementation TBEmojiBottomBar
 
 - (instancetype)initWithFrame:(CGRect)frame {
 
     if(self = [super initWithFrame:frame]) {
-        [self commomIntt];
+        [self commomInit];
     }
     return self;
 }
 
-- (void)commomIntt {
+- (instancetype)initWithFrame:(CGRect)frame buttonArray:(NSArray *)buttonArray {
+    self.buttonArray = buttonArray;
+    return [self initWithFrame:frame];
+}
+
+- (void)commomInit {
 
     [self setBackgroundColor:[UIColor whiteColor]];
+
+    _sendButton  = [[UIButton alloc] initWithFrame:CGRectMake([TBEmojiKeyboardConstant tbkey_getDeviceWidth] -kTBEmojiSendButtonWidth, 0,kTBEmojiSendButtonWidth, kTBEmojiBottomBarHeight)];
+    [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
+    [_sendButton setBackgroundColor:[UIColor blueColor]];
+    [_sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self addSubview:_sendButton];
+    
+    
+    _buttonScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,[TBEmojiKeyboardConstant tbkey_getDeviceWidth] - kTBEmojiSendButtonWidth, kTBEmojiBottomBarHeight)];
+    [self addSubview:_buttonScrollView];
+    [self initButton];
 }
+
+- (void)initButton {
+
+    UIButton *lastButton;
+    for (NSString *buttonTitle in self.buttonArray) {
+        
+        UIButton *button;
+        if (!lastButton) {
+            button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kTBEmojiSendButtonWidth, kTBEmojiBottomBarHeight)];
+            [button setSelected:YES];
+        } else {
+             button = [[UIButton alloc] initWithFrame:CGRectMake(button.frame.origin.x + kTBEmojiSendButtonWidth, 0, kTBEmojiSendButtonWidth, kTBEmojiBottomBarHeight)];
+        }
+        lastButton = button;
+        [button setTitle:buttonTitle forState:UIControlStateNormal];
+        [button setTitleColor:TBK_BottomButtonTitle forState:UIControlStateNormal];
+        [button setBackgroundImage:[self imageWithColor:TBK_BottomButtonSelected] forState:UIControlStateSelected];
+        [_buttonScrollView addSubview:button];
+    }
+}
+
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

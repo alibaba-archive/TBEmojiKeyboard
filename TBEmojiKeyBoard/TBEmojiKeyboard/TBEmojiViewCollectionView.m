@@ -8,6 +8,7 @@
 
 #import "TBEmojiViewCollectionView.h"
 #import "TBEmojiPageFlowLayout.h"
+#import "TBEmojiKeyboardConstant.h"
 
 NSString *const cellIdentifer = @"TBEmojiIdentifer";
 
@@ -39,7 +40,7 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height-20, CGRectGetWidth(self.frame), 20)];
     [self.pageControl setNumberOfPages:[self getPageNumber]];
     [self.pageControl setCurrentPage:0];
-    [self.pageControl setBackgroundColor:[UIColor grayColor]];
+    [self.pageControl setBackgroundColor:TBK_BottomButtonSelected];
     
     [self addSubview:self.pageControl];
 }
@@ -67,7 +68,7 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return 24;
+    return kTBEmojiRow * kTBEmojiSection;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,7 +76,7 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
     UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifer forIndexPath:indexPath];
     UIImageView *imageview = [[UIImageView alloc] initWithFrame:cell.contentView.frame];
     [imageview setImage:[UIImage imageNamed:@"moji"]];
-    if (indexPath.row <23 && [self isValidCell:indexPath]) {
+    if (indexPath.row <kTBEmojiRow * kTBEmojiSection -1 && [self isValidCell:indexPath]) {
         [cell.contentView addSubview:imageview];
     } else
     {
