@@ -38,7 +38,7 @@
     TBEmojiViewCollectionView *collectionView = [[TBEmojiViewCollectionView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), kTBEmojiCollectionViewHeight)];
     [self addSubview:collectionView];
     
-    NSArray *buttonArray = @[@"默认",@"Emoji"];
+    NSArray *buttonArray = @[@"最近",@"默认",@"Emoji"];
     TBEmojiBottomBar *bottomBar = [[TBEmojiBottomBar alloc] initWithFrame:CGRectMake(0, kTBEmojiKeyboardHeight - kTBEmojiBottomBarHeight, CGRectGetWidth(self.frame), kTBEmojiBottomBarHeight) buttonArray:buttonArray];
     [self addSubview:bottomBar];
     

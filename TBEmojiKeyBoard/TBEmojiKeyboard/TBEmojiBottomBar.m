@@ -60,7 +60,7 @@
             button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kTBEmojiSendButtonWidth, kTBEmojiBottomBarHeight)];
             [button setSelected:YES];
         } else {
-             button = [[UIButton alloc] initWithFrame:CGRectMake(button.frame.origin.x + kTBEmojiSendButtonWidth, 0, kTBEmojiSendButtonWidth, kTBEmojiBottomBarHeight)];
+             button = [[UIButton alloc] initWithFrame:CGRectMake(lastButton.frame.origin.x + kTBEmojiSendButtonWidth, 0, kTBEmojiSendButtonWidth, kTBEmojiBottomBarHeight)];
         }
         lastButton = button;
         [button setTitle:buttonTitle forState:UIControlStateNormal];

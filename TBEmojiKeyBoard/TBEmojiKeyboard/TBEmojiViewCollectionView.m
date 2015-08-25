@@ -10,13 +10,15 @@
 #import "TBEmojiPageFlowLayout.h"
 #import "TBEmojiKeyboardConstant.h"
 
+int originTable[kTBEmojiSection][kTBEmojiRow];
+int covertOriginTabel[kTBEmojiSection][kTBEmojiRow];
+
 NSString *const cellIdentifer = @"TBEmojiIdentifer";
 
 @interface TBEmojiViewCollectionView()<UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) UICollectionView  *collectionView;
 @property (nonatomic, strong) UIPageControl     *pageControl;
-
 @property (nonatomic, strong) NSArray           *dataSource;
 
 @end
@@ -26,9 +28,27 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
 - (instancetype)initWithFrame:(CGRect)frame {
     
     if(self = [super initWithFrame:frame]) {
+        [self initTable];
         [self commomIntt];
     }
     return self;
+}
+
+- (void)initTable {
+    int index = 0;
+    for (int i =0; i< kTBEmojiSection; i++) {
+        for (int j =0; j<kTBEmojiRow; j++) {
+            originTable[i][j] = index++;
+        }
+    }
+    
+    index = 0;
+    for (int i =0; i< kTBEmojiRow; i++) {
+        for (int j =0; j<kTBEmojiSection; j++) {
+            covertOriginTabel[j][i] = index++;
+        }
+    }
+    
 }
 
 - (void)commomIntt {
@@ -56,7 +76,8 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.pagingEnabled = YES;
-    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    [self.collectionView setBackgroundColor:TBK_BottomButtonSelected];
+    self.collectionView.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.collectionView];
 
 }
@@ -74,15 +95,25 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifer forIndexPath:indexPath];
-    UIImageView *imageview = [[UIImageView alloc] initWithFrame:cell.contentView.frame];
-    [imageview setImage:[UIImage imageNamed:@"moji"]];
-    if (indexPath.row <kTBEmojiRow * kTBEmojiSection -1 && [self isValidCell:indexPath]) {
+    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [imageview setImage:[UIImage imageNamed:@"emoji_1"]];
+    
+    NSInteger dataSourceIndex =  [self covertIndexPathtoDataSourceIndex:indexPath];
+    
+    if (indexPath.row <kTBEmojiRow * kTBEmojiSection -1 && dataSourceIndex <=self.dataSource.count) {
         [cell.contentView addSubview:imageview];
+        imageview.center = cell.contentView.center;
     } else
     {
         for (UIView *v in cell.contentView.subviews) {
             [v removeFromSuperview];
         }
+    }
+    if (indexPath.row == kTBEmojiRow * kTBEmojiSection -1) {
+        UIImageView *deleteImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+        [deleteImage setImage:[UIImage imageNamed:@"delete_emoji"]];
+        [cell.contentView addSubview:deleteImage];
+        deleteImage.center = cell.contentView.center;
     }
     return cell;
 }
@@ -102,17 +133,19 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
 
 #pragma mark private
 
-- (BOOL)isValidCell:(NSIndexPath *)indexPath {
-
-    if ((indexPath.section +1) * (indexPath.row +1) <= self.dataSource.count) {
-//        NSLog(@"%ld %ld %ld",indexPath.section +1,indexPath.row +1,self.dataSource.count );
-        return YES;
-    }
-    return NO;
-}
-
 - (NSInteger)getPageNumber {
     return self.dataSource.count/24==0?self.dataSource.count/24:self.dataSource.count/24+1;
+}
+
+- (NSInteger)covertIndexPathtoDataSourceIndex:(NSIndexPath *)indexPath {
+    for (int i =0; i<kTBEmojiSection; i++) {
+        for (int j =0; j<kTBEmojiRow; j++) {
+            if (originTable[i][j] == indexPath.row) {
+                return covertOriginTabel[i][j] + indexPath.section * kTBEmojiSection *kTBEmojiRow;
+            }
+        }
+    }
+    return 0;
 }
 
 /*
