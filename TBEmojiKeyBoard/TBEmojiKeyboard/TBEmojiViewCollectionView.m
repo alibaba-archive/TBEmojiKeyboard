@@ -9,17 +9,23 @@
 #import "TBEmojiViewCollectionView.h"
 #import "TBEmojiPageFlowLayout.h"
 #import "TBEmojiKeyboardConstant.h"
+#import "TBEmojiKeyboardCell.h"
+#import "TBEmojiModel.h"
+#import "TBEmojiRecentManager.h"
 
 int originTable[kTBEmojiSection][kTBEmojiRow];
 int covertOriginTabel[kTBEmojiSection][kTBEmojiRow];
 
 NSString *const cellIdentifer = @"TBEmojiIdentifer";
+NSString *const deleteCellIdentifer = @"TBEmojiIdentiferDelete";
 
 @interface TBEmojiViewCollectionView()<UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) UICollectionView  *collectionView;
 @property (nonatomic, strong) UIPageControl     *pageControl;
-@property (nonatomic, strong) NSArray           *dataSource;
+@property (nonatomic, strong) NSMutableArray    *dataSource;
+@property (nonatomic, assign) NSInteger         currentSection;
+@property (nonatomic, strong) UIImageView       *popUpView;
 
 @end
 
@@ -28,8 +34,9 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
 - (instancetype)initWithFrame:(CGRect)frame {
     
     if(self = [super initWithFrame:frame]) {
+        _currentSection = 0;
         [self initTable];
-        [self commomIntt];
+        [self commomInit];
     }
     return self;
 }
@@ -51,23 +58,29 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
     
 }
 
-- (void)commomIntt {
-    
+- (void)commomInit {
+
     [self initCollectionView];
     [self initDataSource];
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellIdentifer];
+    [self.collectionView registerClass:[TBEmojiKeyboardCell class] forCellWithReuseIdentifier:cellIdentifer];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:deleteCellIdentifer];
     
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height-20, CGRectGetWidth(self.frame), 20)];
-    [self.pageControl setNumberOfPages:[self getPageNumber]];
+    [self addSubview:self.pageControl];
+    [self configPageControl];
+}
+
+- (void)configPageControl {
+    [self.pageControl setNumberOfPages:[self getPageNumberofIndex:_currentSection]];
     [self.pageControl setCurrentPage:0];
     [self.pageControl setBackgroundColor:TBK_BottomButtonSelected];
     
-    [self addSubview:self.pageControl];
 }
 
 - (void)initDataSource {
-
-    self.dataSource = [[NSArray alloc] initWithObjects:@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1", nil];
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"default" ofType:@"plist"];
+    NSDictionary *defaultDict = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    self.dataSource = [[NSMutableArray alloc] initWithArray: @[[[TBEmojiRecentManager manager] getRecentEmoji],[defaultDict objectForKey:@"emoticons"]]];
 }
 
 - (void)initCollectionView {
@@ -84,7 +97,7 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
-    return [self getPageNumber];
+    return [self getPageNumberofIndex:_currentSection];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -94,32 +107,59 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifer forIndexPath:indexPath];
-    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-    [imageview setImage:[UIImage imageNamed:@"emoji_1"]];
+    TBEmojiKeyboardCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifer forIndexPath:indexPath];
     
-    NSInteger dataSourceIndex =  [self covertIndexPathtoDataSourceIndex:indexPath];
+    NSArray *currentDataSource = [self.dataSource objectAtIndex:_currentSection];
     
-    if (indexPath.row <kTBEmojiRow * kTBEmojiSection -1 && dataSourceIndex <=self.dataSource.count) {
-        [cell.contentView addSubview:imageview];
-        imageview.center = cell.contentView.center;
-    } else
-    {
-        for (UIView *v in cell.contentView.subviews) {
-            [v removeFromSuperview];
-        }
+    NSInteger dataSourceIndex =  [self convertIndexPathtoDataSourceIndex:indexPath];
+    
+    if (indexPath.row <kTBEmojiRow * kTBEmojiSection -1 && dataSourceIndex - indexPath.section < currentDataSource.count) {
+        NSDictionary *data = [currentDataSource objectAtIndex:dataSourceIndex - indexPath.section];
+        [cell configWithModel:[[TBEmojiModel alloc] initWithDictionary:data]];
+    } else {
     }
     if (indexPath.row == kTBEmojiRow * kTBEmojiSection -1) {
+        UICollectionViewCell *deleteCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:deleteCellIdentifer forIndexPath:indexPath];
         UIImageView *deleteImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
         [deleteImage setImage:[UIImage imageNamed:@"delete_emoji"]];
-        [cell.contentView addSubview:deleteImage];
-        deleteImage.center = cell.contentView.center;
+        [deleteCell.contentView addSubview:deleteImage];
+        deleteImage.center = deleteCell.contentView.center;
+        return deleteCell;
     }
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%ld,%ld",indexPath.section,indexPath.row);
+
+    if (indexPath.row == kTBEmojiRow * kTBEmojiSection -1) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(collectionViewDidDelete:)]) {
+            [self.delegate collectionViewDidDelete:self];
+        }
+        return;
+    }
+    
+    NSArray *currentDataSource = [self.dataSource objectAtIndex:_currentSection];
+    NSInteger dataSourceIndex =  [self convertIndexPathtoDataSourceIndex:indexPath];
+    if (indexPath.row <kTBEmojiRow * kTBEmojiSection -1 && dataSourceIndex - indexPath.section < currentDataSource.count) {
+        NSInteger index =[self convertIndexPathtoDataSourceIndex:indexPath] - indexPath.section;
+        [[TBEmojiRecentManager manager] appendEmoji:[self.dataSource[_currentSection] objectAtIndex:index]];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(collectionView:didSelectEmoji:)]) {
+            [self.delegate collectionView:self didSelectEmoji:[self.dataSource[_currentSection] objectAtIndex:index]];
+        }
+    }
+}
+
+#pragma mark bottombar delegate
+
+- (void)TBEmojiBottomBar:(TBEmojiBottomBar *)bottomBar didSelectAtIndex:(NSInteger)index {
+
+    _currentSection = index;
+    [self configPageControl];
+    if (index ==0) {
+        [self.dataSource replaceObjectAtIndex:0 withObject:[[TBEmojiRecentManager manager] getRecentEmoji]];
+    }
+    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    [self.collectionView reloadData];
 }
 
 #pragma mark ScrollView Delegate 
@@ -130,14 +170,16 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
     self.pageControl.currentPage = index;
 }
 
-
 #pragma mark private
 
-- (NSInteger)getPageNumber {
-    return self.dataSource.count/24==0?self.dataSource.count/24:self.dataSource.count/24+1;
+- (NSInteger)getPageNumberofIndex:(NSInteger)index {
+    NSArray *array = [self.dataSource objectAtIndex:index];
+    NSInteger numberOfPage = kTBEmojiSection *kTBEmojiRow - 1;
+    NSInteger page = array.count%numberOfPage==0?array.count/numberOfPage:array.count/numberOfPage+1;
+    return page;
 }
 
-- (NSInteger)covertIndexPathtoDataSourceIndex:(NSIndexPath *)indexPath {
+- (NSInteger)convertIndexPathtoDataSourceIndex:(NSIndexPath *)indexPath {
     for (int i =0; i<kTBEmojiSection; i++) {
         for (int j =0; j<kTBEmojiRow; j++) {
             if (originTable[i][j] == indexPath.row) {
@@ -148,12 +190,5 @@ NSString *const cellIdentifer = @"TBEmojiIdentifer";
     return 0;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

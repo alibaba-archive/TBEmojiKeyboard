@@ -87,15 +87,15 @@
      Restore the size of the text view (fill self's view).
      Animate the resize so that it's in sync with the disappearance of the keyboard.
      */
-//    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-//    NSTimeInterval animationDuration;
-//    [animationDurationValue getValue:&animationDuration];
-//    
-//    CGRect viewSize = [[UIScreen mainScreen] bounds];
-//    
-//    [UIView animateWithDuration:animationDuration animations:^{
-//        self.view.frame = viewSize;
-//    }];
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    CGRect viewSize = [[UIScreen mainScreen] bounds];
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        self.view.frame = viewSize;
+    }];
 }
 
 - (void)keyboardHide:(NSNotification *)notif {
@@ -113,7 +113,7 @@
 }
 
 - (IBAction)emoji:(id)sender {
-    //[self.inputView resignFirstResponder];
+    [self.inputView becomeFirstResponder];
     
     [self.inputView switchToEmojiKeyboard:self.keyboard];
 //    [self.keyboard showKeyboard];

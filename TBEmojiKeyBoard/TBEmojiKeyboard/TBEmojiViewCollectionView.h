@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TBEmojiBottomBar.h"
 
-@interface TBEmojiViewCollectionView : UIView
+@class TBEmojiViewCollectionView;
+
+@protocol TBEmojiViewCollectionViewDelegate <NSObject>
+
+- (void)collectionView:(TBEmojiViewCollectionView *)collectionview didSelectEmoji:(NSDictionary *)dict;
+
+- (void)collectionViewDidDelete:(TBEmojiViewCollectionView *)collectionview;
+
+@end
+
+@interface TBEmojiViewCollectionView : UIView <TBEmojiBottomBarDelegate>
+
+@property (nonatomic, weak) id<TBEmojiViewCollectionViewDelegate> delegate;
 
 @end

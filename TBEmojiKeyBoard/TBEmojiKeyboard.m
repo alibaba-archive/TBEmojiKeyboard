@@ -11,11 +11,9 @@
 #import "TBEmojiBottomBar.h"
 #import "TBEmojiKeyboardConstant.h"
 
-@interface TBEmojiKeyboard()
-
+@interface TBEmojiKeyboard()<TBEmojiViewCollectionViewDelegate>
 
 @property (nonatomic, weak ,readwrite)  UIResponder<UITextInput>    *textInput;
-
 
 @end
 
@@ -36,10 +34,12 @@
     [self setFrame:CGRectMake(0, 20, 375, kTBEmojiKeyboardHeight)];
     
     TBEmojiViewCollectionView *collectionView = [[TBEmojiViewCollectionView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), kTBEmojiCollectionViewHeight)];
+    collectionView.delegate = self;
     [self addSubview:collectionView];
     
-    NSArray *buttonArray = @[@"最近",@"默认",@"Emoji"];
+    NSArray *buttonArray = @[@"最近",@"默认"];
     TBEmojiBottomBar *bottomBar = [[TBEmojiBottomBar alloc] initWithFrame:CGRectMake(0, kTBEmojiKeyboardHeight - kTBEmojiBottomBarHeight, CGRectGetWidth(self.frame), kTBEmojiBottomBarHeight) buttonArray:buttonArray];
+    bottomBar.delegate = collectionView;
     [self addSubview:bottomBar];
     
 }
@@ -64,13 +64,20 @@
 
     
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+
+#pragma mark collectionView Delegate
+
+- (void)collectionView:(TBEmojiViewCollectionView *)collectionview didSelectEmoji:(NSDictionary *)dict {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(keyboard:didSelectEmoji:)]) {
+        [self.delegate keyboard:self didSelectEmoji:dict];
+    }
 }
-*/
+
+- (void)collectionViewDidDelete:(TBEmojiViewCollectionView *)collectionview {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(keyboardDidDelete:)]) {
+        [self.delegate keyboardDidDelete:self];
+    }
+}
 
 
 #pragma mark private

@@ -11,6 +11,7 @@
 
 #define TBK_BottomButtonSelected [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1]
 #define TBK_BottomButtonTitle [UIColor colorWithRed:128/255.0 green:128/255.0 blue:128/255.0 alpha:1]
+#define TBK_SendButtonBackground [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1]
 
 static const CGFloat    kTBEmojiKeyboardHeight          = 216;
 static const CGFloat    kTBEmojiCollectionViewHeight    = 181;

@@ -32,6 +32,10 @@
 
 - (void)TBEmojiKeyboardDidHideKeyboard:(TBEmojiKeyboard *)keyboard;
 
+- (void)keyboard:(TBEmojiKeyboard *)collectionview didSelectEmoji:(NSDictionary *)dict;
+
+- (void)keyboardDidDelete:(TBEmojiKeyboard *)keyboard;
+
 @end
 
 @interface TBEmojiKeyboard : UIView
@@ -42,5 +46,7 @@
 - (void)showKeyboard;
 
 - (void)hideKeyboard;
+
+@property (nonatomic, weak) id<TBEmojiKeyboardDelegate> delegate;
 
 @end
