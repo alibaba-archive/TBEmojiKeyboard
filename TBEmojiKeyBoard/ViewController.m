@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "TBEmojiKeyboard.h"
 
-@interface ViewController ()
+@interface ViewController ()<TBEmojiKeyboardDelegate>
 
 @property (nonatomic, strong) TBEmojiKeyboard *keyboard;
 
@@ -43,6 +43,7 @@
                                                object:nil];
     
     self.keyboard= [[TBEmojiKeyboard alloc] init];
+    self.keyboard.delegate = self;
     //[self.view addSubview:self.keyboard];
 }
 
@@ -115,7 +116,7 @@
 - (IBAction)emoji:(id)sender {
     [self.inputView becomeFirstResponder];
     
-    [self.inputView switchToEmojiKeyboard:self.keyboard];
+    [self.view switchToEmojiKeyboard:self.keyboard];
 //    [self.keyboard showKeyboard];
     [self.emojiButton setAction:@selector(sKeyboard)];
     [self.emojiButton setTitle:@"键盘"];
@@ -129,7 +130,17 @@
     [self.emojiButton setTitle:@"表情"];
 }
 
+- (void)keyboard:(TBEmojiKeyboard *)collectionview didSelectEmoji:(NSDictionary *)dict {
 
+    NSMutableString *string = [[NSMutableString alloc] initWithString:self.inputView.text];
+    [string appendString:[dict objectForKey:@"chs"]];
+    [self.inputView setText:[string copy]];
+}
+
+- (void)keyboardDidDelete:(TBEmojiKeyboard *)keyboard {
+
+    
+}
 
 
 @end
